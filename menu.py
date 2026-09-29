@@ -48,4 +48,6 @@ def menu_clientes():
         sleep(1)
         cliente.listar_clientes('clientes.json')
         print()
-        
+    if resposta == '3':
+        sleep(1)
+        cliente.editar_cliente('clientes.json')

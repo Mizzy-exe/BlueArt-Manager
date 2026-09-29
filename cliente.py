@@ -64,3 +64,35 @@ def listar_clientes(clientes):                              # lista todos os cli
         print(f'Cidade: {info["cidade"]}')
         print('-' * 30)
 
+
+def editar_cliente(clientes):
+    print('\n--- EDITAR CLIENTE ---')
+
+    with open ('clientes.json', 'r', encoding='utf-8') as arquivo:
+        dicionario = json.load(arquivo)
+        
+    nome = input('Digite o nome do cliente que deseja encontrar: ').capitalize().strip()
+
+    if nome in dicionario:
+        print(f'Cliente encontrado: {nome}')
+
+        print()
+        print('>>> INFORMAÇÕES ATUAIS')
+        print()
+
+        print(f'Nome: {nome}')
+        print(f'Sexo: {dicionario[nome]["sexo"]}')
+        print(f'idade: {dicionario[nome]["idade"]}')
+        print(f'Celular: {dicionario[nome]["celular"]}')
+        print(f'Email: {dicionario[nome]["email"]}')
+        print(f'Cidade: {dicionario[nome]["cidade"]}')
+
+        print()
+        campo = input('Escreva qual campo deseja editar (nome, sexo, idade, celular, email, cidade): ').lower().strip()
+
+        if campo in dicionario[nome]:
+            novo_valor = input(f'Novo valor para {campo}: ')
+            dicionario[nome][campo] = novo_valor
+
+            with open('clientes.json', 'w', encoding='utf-8') as arquivo:
+                json.dump(dicionario, arquivo, indent=4, ensure_ascii=False)

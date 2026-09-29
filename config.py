@@ -10,7 +10,7 @@ def opcao_commBR():                         # Opções de tamanho, pintura e tip
     {'tipo': 'Full render', 'tamanho': 'Full body', 'brl': 120.00}]
     return comm
 
-def config_artista():                            # Pego nome real e artístico do usuario e coloco em um dicionário
+def config_artista():                            # Pega nome real e artístico do usuario e coloca em um dicionário
     dados_artista = {}
 
     nome = input('>>>> Qual é seu nome? ').strip().capitalize()
