@@ -2,8 +2,6 @@ import json
 import os
 import config
 import arquivo
-import comissao
-import cliente
 from time import sleep
 import menu
 import utils

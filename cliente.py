@@ -96,3 +96,18 @@ def editar_cliente(clientes):
 
             with open('clientes.json', 'w', encoding='utf-8') as arquivo:
                 json.dump(dicionario, arquivo, indent=4, ensure_ascii=False)
+
+
+def pesquisar_cliente(clientes):
+    print('\n--- PESQUISAR CLIENTE ---')
+
+    dicionario = arquivo.json_simples(clientes)
+
+    nome = input('Digite o nome do cliente que deseja encontrar: ').capitalize().strip()
+    print()
+    if nome in dicionario:
+        for i, j in dicionario[nome].items():
+            print(f'{i.capitalize()}: {j}')
+    else:
+        print('Cliente não encontrado.')
+    

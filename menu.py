@@ -42,12 +42,15 @@ def menu_clientes():
     resposta = input('Escolha uma opção: ').strip()
     if resposta == '0':
         return
-    if resposta == '1':
+    elif resposta == '1':
         cliente.add_cliente()
-    if resposta == '2':  
+    elif resposta == '2':  
         sleep(1)
         cliente.listar_clientes('clientes.json')
         print()
-    if resposta == '3':
+    elif resposta == '3':
         sleep(1)
         cliente.editar_cliente('clientes.json')
+    elif resposta == '4':
+        sleep(1)
+        cliente.pesquisar_cliente('clientes.json')
