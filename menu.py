@@ -54,3 +54,6 @@ def menu_clientes():
     elif resposta == '4':
         sleep(1)
         cliente.pesquisar_cliente('clientes.json')
+    elif resposta == '5':
+        sleep(1)
+        cliente.excluir_cliente('clientes.json')

@@ -110,4 +110,26 @@ def pesquisar_cliente(clientes):
             print(f'{i.capitalize()}: {j}')
     else:
         print('Cliente não encontrado.')
-    
+
+
+def excluir_cliente(clientes):
+    print('\n--- EXCLUIR CLIENTE ---')
+
+    with open ('clientes.json', 'r', encoding='utf-8') as arquivo:
+            dicionario = json.load(arquivo)
+
+    nome = input('Digite o nome do cliente que deseja excluir: ').capitalize().strip()
+
+    if nome in dicionario:
+        confirmacao = input(f'Tem certeza que deseja excluir {nome}? (S/N): ').strip().upper()
+
+        if confirmacao == 'S':
+            del dicionario[nome]
+            print(f'Cliente {nome} excluído com sucesso.')
+
+            with open('clientes.json', 'w', encoding='utf-8') as arquivo:
+                json.dump(dicionario, arquivo, indent=4, ensure_ascii=False)
+
+        else:
+            print('Exclusão cancelada.')
+
