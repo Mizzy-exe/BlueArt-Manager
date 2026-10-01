@@ -1,5 +1,6 @@
 from time import sleep
 import cliente
+import comissao
 
 def menu_principal():
     while True:
@@ -57,3 +58,27 @@ def menu_clientes():
     elif resposta == '5':
         sleep(1)
         cliente.excluir_cliente('clientes.json')
+    menu_clientes()
+
+
+def menu_comissoes():
+    print('-' * 40)
+    print(f'{"MENU COMISSÕES":^40}')
+    print('-' * 40)
+
+    print('[1] Adicionar comissão')
+    print('[2] Listar comissões')
+    print('[3] Editar comissão')
+    print('[4] Pesquisar comissão')
+    print('[5] Finalizar comissão')
+    print('[6] Status das comissões')
+    print('[7] Cancelar comissão')
+    print('[0] Voltar ao menu principal')
+
+    resposta = input('Escolha uma opção: ').strip()
+
+    if resposta == '0':
+        return
+    elif resposta == '1':
+        sleep(1)
+        comissao.add_comissao()

@@ -51,3 +51,9 @@ def calculo_extra(escolha, itm):                       #itm é item, eu so fique
     print()
     total = escolha['brl'] + soma
     print(f'O valor total da comissão é: R${total:.2f}')
+
+
+def add_comissao():
+    print('\n--- ADICIONAR COMISSÃO ---')
+
+    # continuar daqui para adicionar a função de adicionar comissão, que vai ser bem parecida com a função de adicionar cliente, mas com mais campos e mais complexa.
