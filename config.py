@@ -1,7 +1,5 @@
 import json
 from time import sleep
-from datetime import datetime
-
 def opcao_commBR():                         # Opções de tamanho, pintura e tipo de arte
     comm = [{'tipo': 'Sketch', 'tamanho': 'Busto', 'brl': 15.00}, {'tipo': 'Sketch', 'tamanho': 'Half body', 'brl': 35.00}, 
     {'tipo': 'Sketch', 'tamanho': 'Full body', 'brl': 60.00}, {'tipo': 'Flat color', 'tamanho': 'Busto', 'brl': 30.00},
@@ -52,42 +50,4 @@ def inicio_turno():                                                             
                 print()
                 
         return cliente
-
-
-def tabela_esc(): 
-    client = inicio_turno() 
-    commission = opcao_commBR()  
-    
-    # Mostra a tabela de opções toda organizada
-    while True:
-        print(f'{'PINTURA':<24} {'TAMANHO':<23} {'VALOR'}')
-        print()
-
-        for i, c in enumerate(commission, start=1):                                          #tabela
-            print(f'{i} - {c['tipo']:<20} {c['tamanho']:<23} {c['brl']:.2f}') 
-        print() 
-
-        esc_comm = int(input('Digite aqui: '))                           #decisao
-
-        if 1 <= esc_comm <= len(commission):
-            opcao_escolhida = commission[esc_comm - 1]
-            print(f'O(a) {client} escolheu {opcao_escolhida['tamanho']}, {opcao_escolhida['tipo']} por R${opcao_escolhida['brl']:.2f}')
-            print()
-            confirm = input('Tem certeza: [S/N] ').strip().capitalize()
-
-            if confirm == 'S':
-                print('Confirmado.')
-                print()
-                return opcao_escolhida
-            else:
-                print('Então tente novamente.')
-                print()
-        else:
-            print('Opção invalida! Tente novamente.')   
-            print() 
-
-
-def data_hora():
-    agora = datetime.now()
-    return agora.strftime('%d/%m/%Y %H:%M')             # diz a data e hora do registro da comissão
 

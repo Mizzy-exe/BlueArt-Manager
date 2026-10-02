@@ -30,8 +30,6 @@ print(f'            ---{artista['nome_artistico']}---'.upper())
 
 menu.menu_principal()
 utils.limpar_terminal()
-menu.menu_clientes()
-
 
 
 # while True:

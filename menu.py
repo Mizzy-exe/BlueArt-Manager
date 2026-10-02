@@ -23,6 +23,9 @@ def menu_principal():
         if resposta == '1':
             sleep(1)
             menu_clientes()
+        elif resposta == '2':
+            sleep(1)
+            menu_comissoes()
 
 
 
@@ -66,13 +69,13 @@ def menu_comissoes():
     print(f'{"MENU COMISSÕES":^40}')
     print('-' * 40)
 
-    print('[1] Adicionar comissão')
-    print('[2] Listar comissões')
-    print('[3] Editar comissão')
-    print('[4] Pesquisar comissão')
-    print('[5] Finalizar comissão')
-    print('[6] Status das comissões')
-    print('[7] Cancelar comissão')
+    print('[1] Ver comissões ativas')
+    print('[2] Ver comissões pendentes')
+    print('[3] Ver comissões finalizadas')
+    print('[4] ver comissões canceladas')
+    print('[6] Editar comissão')
+    print('[8] Status das comissões')
+    print('[9] Mudar status de comissão')
     print('[0] Voltar ao menu principal')
 
     resposta = input('Escolha uma opção: ').strip()
@@ -81,4 +84,4 @@ def menu_comissoes():
         return
     elif resposta == '1':
         sleep(1)
-        comissao.add_comissao()
+       

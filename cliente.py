@@ -1,7 +1,6 @@
-import json
 import os
 from time import sleep
-import arquivo
+import utils, menu, comissao, arquivo, json, arquivo
 
 def add_cliente():
     if os.path.exists('clientes.json'):                                 # checa se o arquivo clientes.json existe
@@ -31,24 +30,37 @@ def add_cliente():
         celular = input('Numero de celular: ')
         email = input('Email: ').capitalize().strip()
         cidade = input('Cidade: ').capitalize().strip()
+
+        opcao = comissao.add_comissao(nome)
+
+        comfirm = input('Tem certeza que deseja adicionar este cliente? [S/N]: ').strip().capitalize()
+        print()
         
-        clientes[nome] = {
-            'sexo': sexo,
-            'idade': idade,
-            'celular': celular,
-            'email': email,
-            'cidade': cidade,   
+        if comfirm == 'S':
+            print(f'Cliente {nome} adicionado com sucesso!')
+        
+            clientes[nome] = {
+                'sexo': sexo,
+                'idade': idade,
+                'celular': celular,
+                'email': email,
+                'cidade': cidade,
+                'opcao': opcao,
+                'data_hora': utils.data_hora()
         }
 
-        with open('clientes.json', 'w', encoding='utf-8') as arquivo:                  # faz a atualização do arquivo clientes.json com os novos dados
-                json.dump(clientes, arquivo, indent=4, ensure_ascii=False)
+            with open('clientes.json', 'w', encoding='utf-8') as arquivo:                  # faz a atualização do arquivo clientes.json com os novos dados
+                    json.dump(clientes, arquivo, indent=4, ensure_ascii=False)
 
-        print('\nArquivo atualizado com sucesso!')
-        print()
-        print('--- Cliente adicionado ---')
-        print(f'Agora temos {len(clientes)} clientes cadastrados.')
-        return clientes
-        
+            print()
+            print('--- Cliente adicionado ---')
+            print(f'Agora temos {len(clientes)} clientes cadastrados.')
+            return clientes
+
+        else:
+            print('Cliente não adicionado. Voltando ao menu principal...')
+            sleep(2)
+            return menu.menu_principal()
 
 def listar_clientes(clientes):                              # lista todos os clientes cadastrados no arquivo clientes.json
     print('\n--- LISTA DE CLIENTES ---')
