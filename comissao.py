@@ -80,24 +80,41 @@ def add_comissao(cliente):
             print(f'O(a) {cliente} escolheu {opcao_escolhida['tamanho']}, {opcao_escolhida['tipo']} por R${opcao_escolhida['brl']:.2f}')
             print()
 
+            resposta = input('Deseja confirmar esta opção? [S/N]: ').strip().upper()
+
+            if resposta == 'S':
+                print(f'Opção confirmada!')
+                print()
+            
             return opcao_escolhida
-            # confirm = input('Tem certeza: [S/N] ').strip().capitalize()
 
-            # if confirm == 'S':
-            #     print('Confirmado.')
-            #     comissao[cliente] = {
-            #         'opcao': opcao_escolhida,
-            #         'data_hora': utils.data_hora()
-            #     }
-
-            #     return comissao[cliente]  # Retorna a comissão adicionada para ser salva no arquivo JSON
-            # else:
-            #     print('Então tente novamente.')
-            #     print()
         else:
             print('Opção invalida! Tente novamente.')   
             print() 
 
-# ta ficando bagunçado, eu tenho que fazer cada devido cliente receber no arquivo json suas escolhas e não ter dois arquivos de clientes, pelo menos pra mim não faz sentido, mas eu vou deixar assim por enquanto, depois eu vejo se mudo.
 
-#  ja tenho uma ideia. Arrumar a funcao de adicionar comissao e chamar essa funcao dentro de add cliente, assim cada cliente vai ter suas comissoes dentro do arquivo clientes.json, e nao vai precisar de outro arquivo.
+def status_comissao():
+    stts = 'Em andamento'  # Valor padrão para status de comissão
+
+    return stts
+
+
+#     print('\n--- STATUS DA COMISSÃO ---')
+
+#     print('[1] - pendente\n[2] - em andamento\n[3] - finalizada\n[4] - cancelada')
+
+#     resposta = input('Escolha uma opção: ').strip()
+
+#     if resposta == '1':
+#         status = 'Pendente'
+#     elif resposta == '2':
+#         status = 'Em andamento'
+#     elif resposta == '3':
+#         status = 'Finalizada'
+#     elif resposta == '4':
+#         status = 'Cancelada'
+#     else:
+#         print('Opção inválida. Por favor, escolha uma opção válida.')
+#         return status_comissao()  # Chama a função novamente para permitir uma nova escolha
+
+#     return status

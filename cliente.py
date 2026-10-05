@@ -32,6 +32,7 @@ def add_cliente():
         cidade = input('Cidade: ').capitalize().strip()
 
         opcao = comissao.add_comissao(nome)
+        stts = comissao.status_comissao()
 
         comfirm = input('Tem certeza que deseja adicionar este cliente? [S/N]: ').strip().capitalize()
         print()
@@ -46,6 +47,7 @@ def add_cliente():
                 'email': email,
                 'cidade': cidade,
                 'opcao': opcao,
+                'status': stts,
                 'data_hora': utils.data_hora()
         }
 
