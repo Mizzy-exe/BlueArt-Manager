@@ -99,22 +99,47 @@ def status_comissao():
     return stts
 
 
-#     print('\n--- STATUS DA COMISSÃO ---')
+def mudar_status_comissao():
+    print('\n--- MUDAR STATUS DA COMISSÃO ---')
 
-#     print('[1] - pendente\n[2] - em andamento\n[3] - finalizada\n[4] - cancelada')
+    with open('clientes.json', 'r', encoding='utf-8') as arquivo:
+        dicionario = json.load(arquivo)
 
-#     resposta = input('Escolha uma opção: ').strip()
+    nome = input('Digite o nome do cliente para mudar o status da comissão: ').capitalize().strip()
 
-#     if resposta == '1':
-#         status = 'Pendente'
-#     elif resposta == '2':
-#         status = 'Em andamento'
-#     elif resposta == '3':
-#         status = 'Finalizada'
-#     elif resposta == '4':
-#         status = 'Cancelada'
-#     else:
-#         print('Opção inválida. Por favor, escolha uma opção válida.')
-#         return status_comissao()  # Chama a função novamente para permitir uma nova escolha
+    if nome in dicionario:
+        cliente_info = dicionario[nome]
 
-#     return status
+        print(f'Cliente: {nome}')
+        print(f'Comissão atual: {cliente_info["opcao"]["tipo"]}, {cliente_info["opcao"]["tamanho"]}, R${cliente_info["opcao"]["brl"]:.2f}')
+        print(f'Status atual: {cliente_info["status"]}')
+
+        print('\nEscolha o novo status da comissão:')
+
+        status = int(input('[1] Em andamento\n[2] Pendente\n[3] Finalizada\n[4] Cancelada\nDigite o número correspondente: '))
+
+
+        if status == 1:
+            cliente_info['status'] = 'Em andamento'
+        elif status == 2:
+            cliente_info['status'] = 'Pendente'
+        elif status == 3:
+            cliente_info['status'] = 'Finalizada'
+        elif status == 4:
+            cliente_info['status'] = 'Cancelada'
+        else:
+            print('Opção inválida. Voltando ao menu principal....')
+            sleep(2)
+            return 
+
+        print(f'Status da comissão do cliente {nome} alterado para: {cliente_info["status"]}')
+
+        with open('clientes.json', 'w', encoding='utf-8') as arquivo:
+            json.dump(dicionario, arquivo, indent=4, ensure_ascii=False)
+
+    else:
+        print(f'Cliente {nome} não encontrado. Voltando ao menu principal....')
+        sleep(2)
+        return
+        
+        

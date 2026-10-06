@@ -81,7 +81,8 @@ def menu_comissoes():
 
     if resposta == '0':
         return
-    elif resposta == '1':
+    elif resposta == '6':
         sleep(1)
+        comissao.mudar_status_comissao()
 
        
