@@ -1,6 +1,7 @@
 from time import sleep
 import cliente
 import comissao
+import faturamento
 
 def menu_principal():
     while True:
@@ -10,9 +11,8 @@ def menu_principal():
 
         print('[1] Clientes')
         print('[2] Comissões')
-        print('[3] Histórico')
-        print('[4] Faturamento')
-        print('[5] Configurações')
+        print('[3] Faturamento')
+        print('[4] Configurações')
         print('[0] Sair')
 
         resposta = input('Escolha uma opção: ').strip()
@@ -26,7 +26,9 @@ def menu_principal():
         elif resposta == '2':
             sleep(1)
             menu_comissoes()
-
+        elif resposta == '3':
+            sleep(1)
+            menu_faturamento()
 
 
 def menu_clientes():
@@ -73,16 +75,55 @@ def menu_comissoes():
     print('[2] Ver comissões pendentes')
     print('[3] Ver comissões finalizadas')
     print('[4] ver comissões canceladas')
-    print('[5] Status das comissões')
-    print('[6] Mudar status de comissão')
+    print('[5] Mudar status de comissão')
     print('[0] Voltar ao menu principal')
 
     resposta = input('Escolha uma opção: ').strip()
 
     if resposta == '0':
         return
-    elif resposta == '6':
+    elif resposta == '1':
+        sleep(1)
+        comissao.listar_comissoes_por_status('Em andamento')
+    elif resposta == '2':
+        sleep(1)
+        comissao.listar_comissoes_por_status('Pendente')
+    elif resposta == '3':
+        sleep(1)
+        comissao.listar_comissoes_por_status('Finalizada')
+    elif resposta == '4':
+        sleep(1)
+        comissao.listar_comissoes_por_status('Cancelada')
+    elif resposta == '5':
         sleep(1)
         comissao.mudar_status_comissao()
+    else:
+        print('Opção inválida. Voltando ao menu principal...')
+        sleep(2)
+        return
 
-       
+
+def menu_faturamento():
+    print('-' * 40)
+    print(f'{"MENU FATURAMENTO":^40}')
+    print('-' * 40)
+
+    print('[1] Ver faturamento do dia')
+    print('[2] Ver faturamento do mês')
+    print('[0] Voltar ao menu principal')
+
+    resposta = input('Escolha uma opção: ').strip()
+
+    if resposta == '0':
+        return
+    elif resposta == '1':
+        sleep(1)
+        faturamento.faturamento()
+    elif resposta == '2':
+        sleep(1)
+        faturamento.faturamento_mes()
+    else:
+        print('Opção inválida. Voltando ao menu principal...')
+        sleep(2)
+        return 
+    
