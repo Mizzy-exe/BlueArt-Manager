@@ -48,7 +48,8 @@ def add_cliente():
                 'cidade': cidade,
                 'opcao': opcao,
                 'status': stts,
-                'data_hora': utils.data_hora()
+                'data': utils.data(),
+                'hora': utils.hora()
         }
 
             with open('clientes.json', 'w', encoding='utf-8') as arquivo:                  # faz a atualização do arquivo clientes.json com os novos dados

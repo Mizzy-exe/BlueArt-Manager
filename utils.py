@@ -7,7 +7,10 @@ def limpar_terminal():
     else:
         os.system('clear')
 
-def data_hora():
+def data():
     agora = datetime.now()
-    return agora.strftime('%d/%m/%Y %H:%M')             # diz a data e hora do registro da comissão
+    return agora.strftime('%d/%m/%Y')                  # diz a data do registro da comissão
 
+def hora():
+    agora = datetime.now()
+    return agora.strftime('%H:%M')                     # diz a hora do registro da comissão
