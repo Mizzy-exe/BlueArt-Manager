@@ -33,8 +33,9 @@ def extra(opc):                                                  # Pergunta se o
     print()
 
     if final =='S':
-        registro = config.data_hora()
-        return registro
+        data = utils.data(),utils.hora()
+
+        return data
     else:
         print('ainda em desenvolvimento a partir daqui!')
         return None                                         # return None para caso o cliente não finalize a comissão, para não dar erro no main.py
@@ -142,4 +143,21 @@ def mudar_status_comissao():
         sleep(2)
         return
         
-        
+def listar_comissoes_por_status(status):
+    print(f'\n--- LISTA DE COMISSÕES {status.upper()} ---')
+
+    with open('clientes.json', 'r', encoding='utf-8') as arquivo:
+        dicionario = json.load(arquivo)
+
+    comissao_filtrada = {
+        nome: info
+
+        for nome,info in dicionario.items()
+        if info.get('status') == status
+    }
+
+    for nome, info in comissao_filtrada.items():
+        print(f'Nome do Cliente: {nome}')
+        print(f'Comissão: {info["opcao"]["tipo"]}, {info["opcao"]["tamanho"]}, R${info["opcao"]["brl"]:.2f}')
+
+    print(f'\nTotal de comissões {status}: {len(comissao_filtrada)}')
