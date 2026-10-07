@@ -31,16 +31,4 @@ print(f'            ---{artista['nome_artistico']}---'.upper())
 menu.menu_principal()
 utils.limpar_terminal()
 
-
-# while True:
-#     opcao = config.tabela_esc()
-#     registro = comissao.extra(opcao)
-
-#     print(f'Comissão registrada em {registro}')
-#     print()
-    
-#     continuar = input('Deseja registrar outra comissão? [S/N]: ').strip().capitalize()
-
-#     if continuar != 'S':
-#         print('Encerrando o sistema de comissões... Até logo!')
-#         break
+# Por enquanto está tudo funcionando de forma básica, mas futuramente irei refatorar o código e adicionar mais funcionalidades.
